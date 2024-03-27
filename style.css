@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+#page1{
+    height: 100vh;
+    width: 100vw;
+    
+}
+#page1 #backgroundimg img{
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+#page1 #backgroundimg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+   
+    transition: background-size 0.5s; 
+
+}
+#page1 #nav-part2 h2{
+    font-family:"Old English Text MT" , 'Times New Roman', Times, serif, sans-serif;
+    /* margin-left: 39rem; */
+    font-size: 1.7rem;
+}
+#page1 #nav{
+    display: flex;
+    justify-content: space-between; 
+    color: white;
+    padding: 1rem;
+    height: 2vh;
+    width: 100%;
+   
+    /* border: 2px solid black; */
+    z-index: 1;
+    margin: -99vh 0vh;
+    
+  
+}
+#page1 #nav ul{
+    display: flex;
+    
+    list-style-type: none;
+    color: white;
+    margin-right: 1rem;
+    margin: 6px 0px;
+
+    
+}
+
+#page1 #nav-part3 ul a{
+    
+    margin-right: 2rem;
+    text-decoration: none;
+    color: rgb(239, 233, 233);
+    
+}
+#page1 #nav-part3 ul a i{
+   font-size: large;
+  
+    
+}
+
+#page2 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    background-color: rgb(9, 9, 31);
+    
+}
+
+.image-container {
+    position: relative;
+
+}
+
+.image-container img {
+    width: 30vw;
+    height: 80vh;
+    
+}
+
+.hover-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.mencontainer,
+.womencontainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(24, 22, 38);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: smaller;
+    
+
+   
+}
+
+
+
+.image-container:hover .mencontainer,
+.image-container:hover .womencontainer {
+    opacity: 1;
+    border: 2px solid black;
+}
+
+.mencontainer h2{
+    margin-top: 30vh;
+    font-family: "Old English Text MT";
+    
+    
+    
+}
+
+.womencontainer h2{
+    margin-top: 30vh;
+    
+    font-family: "Old English Text MT";
+    
+    
+}
+
+
+@media screen and (max-width: 1200px) {
+    #page1 #backgroundimg img{
+        opacity: 0;
+        
+    }
+    #page1{
+        background: url('img/bgmainji.jpg') center/cover no-repeat;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #page2 {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .image-container img {
+        width: 50vw;
+        height: 40vh;
+        
+    }
+    .image-container {
+        margin-bottom: 5px;
+    
+    }
+    .mencontainer h2{
+        margin-top: 5vh;
+    }
+    .womencontainer h2{
+        margin-top: 5vh;
+    }
+    
+
+    
+
+
+
+    
+}
+
+

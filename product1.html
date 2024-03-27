@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <style>
+        .product-image  img{
+    width: 500px; /* Adjust the width as per your requirement */
+    height: 600px; /* Let the height adjust proportionally based on the width */
+}
+.product-detail{
+display: flex;
+align-items: center;
+gap: 20vh;
+margin-left: 20vh;
+margin-top: 10vh;
+}
+@media screen and (max-width: 1200px) {
+        .product-detail {
+          display: flex;
+          flex-direction: column;
+          gap: 0vh;
+        }
+        .product-image img {
+          width: 400px;
+          height: 500px;
+          margin-left: -20vh;
+          margin-top: -10vh;
+        }
+        .product-info{
+            margin-right: 220px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="product-detail">
+        <div class="product-image">
+            <img src="" alt="Product Image" id="product-image">
+        </div>
+        <div class="product-info">
+            <h2 id="product-name"></h2>
+            <p id="product-category"></p>
+            <p id="product-price"></p>
+            <p id="product-mrp"></p>
+            <p id="product-tag"></p>
+        </div>
+    </div>
+
+    <script>
+        // Extract product ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Fetch product data from JSON file
+        fetch('women.json')
+            .then(response => response.json())
+            .then(data => {
+                // Find the product with the matching ID
+                const product = data.find((item) => {return item.id == productId});
+                if (product) {
+                    // Populate product details on the page
+                    const productImage=document.getElementById('product-image');
+                    productImage.src = product.Img;
+                    productImage.addEventListener('mouseover', () => {
+                    productImage.src = product.Img1;
+                });
+                productImage.addEventListener('mouseout', () => {
+                    productImage.src = product.Img;
+                });
+                    
+                    document.getElementById('product-name').textContent = product.Name;
+
+                    document.getElementById('product-category').textContent = "Category: " + product.Category;
+                    document.getElementById('product-price').textContent = "Price: Rs " + product.Price;
+                    document.getElementById('product-mrp').textContent = "MRP: Rs " + product.MRP;
+                    document.getElementById('product-tag').textContent = "Tag: " + product.Tag;
+                    
+                } else {
+                    // If product ID is not found, display an error message
+                    document.body.innerHTML = "<h1>Product not found</h1>";
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching product data:', error);
+            });
+    </script>
+</body>
+</html>
